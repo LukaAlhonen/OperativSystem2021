@@ -4,6 +4,7 @@
 #include <string.h>
 
 static int writeToFile(const char **words, size_t words_len, const char *filename){
+    // function for writing words to a file
     FILE *output;
     int ret_val = 0;
     if((output=fopen(filename, "wx")) == NULL){
@@ -65,7 +66,7 @@ int main(int argc, char *argv[]){
             lineptr[i] = tolower(lineptr[i]);
         }
         // separate words from line and put into words array
-        while((wordptr = strsep(&lineptr, " \"()[].,-;\n")) != NULL){
+        while((wordptr = strsep(&lineptr, " .,-:;\n\t")) != NULL){
             if(wordptr == NULL){
                 continue;
             } else if(wordptr[0] == '\0'){
