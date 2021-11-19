@@ -7,6 +7,7 @@ static int writeToFile(const char **words, size_t words_len, const char *filenam
     // function for writing words to a file
     FILE *output;
     int ret_val = 0;
+    int nl_count = 0;
     if((output=fopen(filename, "wx")) == NULL){
         // if file could not be opened set return value to -1 and jump to exit 2
         ret_val = -1;
@@ -14,10 +15,15 @@ static int writeToFile(const char **words, size_t words_len, const char *filenam
     } else{
         // write words to file
         for(int i = 0; i < words_len; i++){
+            if(nl_count == 10){
+                nl_count = 0;
+                fprintf(output, "%s", "\n");
+            }
             if((fprintf(output, "%s", words[i])) < 0){
                 ret_val = -1;
                 goto exit1;
             }
+            nl_count++;
         }
     }
     exit1:
