@@ -33,7 +33,7 @@ static int strcmp_ptr(const void *p1, const void *p2){
 
 int main(int argc, char *argv[]){
     FILE *fp;
-    char *lineptr = NULL; // pointer to hold for line 
+    char *lineptr = NULL; // pointer to hold line buffer
     size_t line_sz; // line size
     ssize_t ret; // to hold return value from getline()
     char *wordptr = NULL; // pointer to hold word
@@ -72,12 +72,12 @@ int main(int argc, char *argv[]){
             } else if(wordptr[0] == '\0'){
                 continue;
             }
-            // put word in words array 
+            // put word in words array
             words[words_len++] = wordptr;
             // make more room for words array
             while(words_len >= words_sz){
                 words_sz += 10;
-                words = realloc(words, words_sz * sizeof(char*)); 
+                words = realloc(words, words_sz * sizeof(char*));
             }
         }
         free(lineptr); // free buffer after use
