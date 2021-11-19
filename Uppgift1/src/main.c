@@ -33,7 +33,7 @@ static int strcmp_ptr(const void *p1, const void *p2){
 
 int main(int argc, char *argv[]){
     FILE *fp;
-    char *lineptr = NULL; // pointer to hold for line 
+    char *lineptr = NULL; // pointer to hold line 
     size_t line_sz; // line size
     ssize_t ret; // to hold return value from getline()
     char *wordptr = NULL; // pointer to hold word
