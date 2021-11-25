@@ -19,7 +19,7 @@ static int writeToFile(const char **words, size_t words_len, const char *filenam
                 nl_count = 0;
                 fprintf(output, "%s", "\n");
             }
-            if((fprintf(output, "%s", words[i])) < 0){
+            if((fprintf(output, "%s ", words[i])) < 0){
                 ret_val = -1;
                 goto exit1;
             }
