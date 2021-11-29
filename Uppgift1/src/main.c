@@ -72,7 +72,7 @@ int main(int argc, char *argv[]){
             lineptr[i] = tolower(lineptr[i]);
         }
         // separate words from line and put into words array
-        while((wordptr = strsep(&lineptr, " .,-:;\n\t")) != NULL){
+        while((wordptr = strsep(&lineptr, " \"\'()[]!?.,-:;\n\t")) != NULL){
             if(wordptr == NULL){
                 continue;
             } else if(wordptr[0] == '\0'){
